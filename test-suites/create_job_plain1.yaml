@@ -9,7 +9,7 @@ name: create_job_plain1
 
 # Optional - one or more author names
 authors:
-  #- Developer 1
+  - shahnawaz
   #- Developer 2
 
 # Suite type - SUITE or ABSTRACT
@@ -51,6 +51,11 @@ testCases:
   },
    "project": {
           "id": "{{project_create_github_abstract_Response.data}}"
+          "account": {
+    
+     "name": "khangithub",
+         },
+      "accountType": "GitHub"
         },
     "name": "testjob25",
      "url": "https://github.com/fxlabsinc/FX_Test-Automation"
