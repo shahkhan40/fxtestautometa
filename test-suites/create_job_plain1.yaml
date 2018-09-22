@@ -55,8 +55,11 @@ testCases:
     
      "name": "khangithub",
          },
+         "genPolicy": "create",
+    "openAPISpec": "http://cloud.fxlabs.io/v1/api-doc",
       "accountType": "GitHub"
         },
+        
     "name": "testjob25",
      "url": "https://github.com/fxlabsinc/FX_Test-Automation"
 
