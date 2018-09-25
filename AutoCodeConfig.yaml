@@ -7,7 +7,7 @@ generators:
   - "@StatusCode == 200"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "sla"
   assertions:
@@ -18,7 +18,7 @@ generators:
   inactive: false
   matches:
   - name: null
-    value: "1000"
+    value: "2000"
     methods: "Get"
     denyRoles: null
     allowRoles: null
@@ -31,7 +31,7 @@ generators:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: null
     value: null
@@ -47,20 +47,20 @@ generators:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "Admin access"
     value: null
     methods: "Post, Put, Delete"
     denyRoles: "Writer, Reader"
-    allowRoles: "Admin"
+    allowRoles: null
     pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
     resourceSamples: null
     queryParams: null
@@ -69,7 +69,7 @@ generators:
     value: null
     methods: "Post, Put, Delete"
     denyRoles: "Reader"
-    allowRoles: "Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
     resourceSamples: null
     queryParams: null
@@ -78,7 +78,7 @@ generators:
     value: null
     methods: "Post, Delete"
     denyRoles: "Collaborator"
-    allowRoles: "Reader, Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/projects/**"
     resourceSamples: null
     queryParams: null
@@ -87,7 +87,7 @@ generators:
     value: null
     methods: "Get, Post, Put, Delete"
     denyRoles: "Other"
-    allowRoles: "Reader, Writer"
+    allowRoles: null
     pathPatterns: "/api/v1/**"
     resourceSamples: null
     queryParams: null
@@ -98,7 +98,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -115,13 +115,16 @@ generators:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
+  - "@StatusCode != 301"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "sql_injection_timebound"
   assertions:
-  - "@ResponseTime < 7000 OR @ResponseTime > 10000"
+  - "@ResponseTime > 7000"
+  - "@ResponseTime > 5000"
+  - "@ResponseTime < 10000"
   - "@StatusCode != 404"
   severity: null
   database:
@@ -137,7 +140,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "invalid_datatype"
   assertions:
@@ -145,7 +148,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "special_chars "
   assertions:
@@ -155,7 +158,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "null_value"
   assertions:
@@ -165,7 +168,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "empty_value"
   assertions:
@@ -183,7 +186,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
 - type: "create"
   assertions:
@@ -193,5 +196,5 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: false
+  inactive: true
   matches: []
