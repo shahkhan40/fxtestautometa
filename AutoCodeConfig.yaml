@@ -1,14 +1,7 @@
 ---
 genPolicy: "Create"
-openAPISpec: "http://13.56.210.25/v2/api-docs"
+openAPISpec: " http://cloud.fxlabs.io/v2/api-docs"
 generators:
-- type: "no_params"
-  assertions:
-  - "@StatusCode == 200"
-  severity: null
-  database: null
-  inactive: true
-  matches: []
 - type: "sla"
   assertions:
   - "@StatusCode == 200"
@@ -18,7 +11,7 @@ generators:
   inactive: false
   matches:
   - name: null
-    value: "2000"
+    value: "1000"
     methods: "Get"
     denyRoles: null
     allowRoles: null
@@ -31,30 +24,68 @@ generators:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: true
-  matches:
-  - name: null
-    value: null
-    methods: "Get"
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: "/api/v1/user-signup/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
+  inactive: false
+  matches: []
 - type: "auth_invalid"
   assertions:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: true
+  inactive: false
+  matches: []
+- type: "DDOS"
+  assertions:
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: "pageSize, page_size, maxResults, max_results"
+    value: null
+    methods: null
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: null
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+- type: "XSS_Injection"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+- type: "sql_injection_timebound"
+  assertions:
+  - "@ResponseTime < 7000"
+  - "@StatusCode != 404"
+  severity: null
+  database:
+    name: "MySQL"
+    version: "5.7"
+  inactive: false
+  matches: []
+- type: "log_Forging"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  severity: null
+  database: null
+  inactive: false
   matches: []
 - type: "rbac"
   assertions:
   - "@StatusCode == 403"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: "Admin access"
     value: null
@@ -92,55 +123,12 @@ generators:
     resourceSamples: null
     queryParams: null
     bodyProperties: null
-- type: "DDOS"
+- type: "no_params"
   assertions:
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
+  - "@StatusCode == 200"
   severity: null
   database: null
-  inactive: true
-  matches:
-  - name: "pageSize, page_size, maxResults, max_results"
-    value: null
-    methods: null
-    denyRoles: null
-    allowRoles: null
-    pathPatterns: null
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-- type: "XSS_Injection"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  - "@StatusCode != 301"
-  severity: null
-  database: null
-  inactive: true
-  matches: []
-- type: "sql_injection_timebound"
-  assertions:
-  - "@ResponseTime > 7000"
-  - "@ResponseTime > 5000"
-  - "@ResponseTime < 10000"
-  - "@StatusCode != 404"
-  severity: null
-  database:
-    name: "MySQL"
-    version: "5.7"
   inactive: false
-  matches: []
-- type: "log_Forging"
-  assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
-  - "@StatusCode != 404"
-  - "@StatusCode != 500"
-  severity: null
-  database: null
-  inactive: true
   matches: []
 - type: "invalid_datatype"
   assertions:
@@ -148,7 +136,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "special_chars "
   assertions:
@@ -158,7 +146,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "null_value"
   assertions:
@@ -168,7 +156,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "empty_value"
   assertions:
@@ -186,7 +174,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "create"
   assertions:
@@ -196,5 +184,5 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
