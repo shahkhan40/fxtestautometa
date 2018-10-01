@@ -14,7 +14,7 @@ headers:
 - "Content-Type: application/json"
 testCases:
 - id: 1
-  body: "{\n  'accessKey' : null,\n  'accountType' : 'Microsoft_TFS_Git',\n  'allowedRegions'\
+  body: "{\n  'accessKey' : null,\n  'accountType' : 'BitBucket',\n  'allowedRegions'\
     \ : [ ],\n  'createdBy' : null,\n  'createdDate' : null,\n  'id' : null,\n  'inactive'\
     \ : null,\n  'modifiedBy' : null,\n  'modifiedDate' : null,\n  'name' : null,\n\
     \  'org' : {\n    'createdBy' : null,\n    'createdDate' : null,\n    'id' : null,\n\

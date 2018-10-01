@@ -15,7 +15,7 @@ headers:
 testCases:
 - id: 1
   body: "{\n  'accessKey' : null,\n  'account' : {\n    'accessKey' : null,\n    'accountType'\
-    \ : 'AWS',\n    'allowedRegions' : [ ],\n    'createdBy' : null,\n    'createdDate'\
+    \ : 'Slack',\n    'allowedRegions' : [ ],\n    'createdBy' : null,\n    'createdDate'\
     \ : null,\n    'id' : null,\n    'inactive' : null,\n    'modifiedBy' : null,\n\
     \    'modifiedDate' : null,\n    'name' : null,\n    'org' : {\n      'createdBy'\
     \ : null,\n      'createdDate' : null,\n      'id' : null,\n      'inactive' :\
@@ -28,7 +28,7 @@ testCases:
     \ : null,\n    'id' : null,\n    'inactive' : null,\n    'modifiedBy' : null,\n\
     \    'modifiedDate' : null,\n    'name' : null,\n    'version' : null\n  },\n\
     \  'secretKey' : null,\n  'token' : null,\n  'type' : 'SLACK',\n  'version' :\
-    \ null,\n  'visibility' : 'PUBLIC'\n}"
+    \ null,\n  'visibility' : 'PRIVATE'\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"

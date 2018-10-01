@@ -6,7 +6,7 @@ authors:
 - "FX Bot"
 type: "SUITE"
 init: []
-endpoint: "/api/v1/notifications?page=eKjthO"
+endpoint: "/api/v1/notifications?page=gUnw3Q"
 method: "GET"
 auth: "Default"
 headers:
