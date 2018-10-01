@@ -1,13 +1,13 @@
 ---
 genPolicy: "Create"
-openAPISpec: "https://cloud.fxlabs.io/v2/api-docs"
+openAPISpec: " http://13.56.210.25/v2/api-docs"
 generators:
 - type: "no_params"
   assertions:
   - "@StatusCode == 200"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "sla"
   assertions:
@@ -15,7 +15,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: null
     value: "1000"
@@ -31,22 +31,74 @@ generators:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: true
-  matches: []
+  inactive: false
+  matches:
+  - name: null
+    value: null
+    methods: "Get"
+    denyRoles: null
+    allowRoles: null
+    pathPatterns: "/api/v1/user-signup/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
 - type: "auth_invalid"
   assertions:
   - "@StatusCode != 200"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
+- type: "rbac"
+  assertions:
+  - "@StatusCode == 403"
+  severity: null
+  database: null
+  inactive: false
+  matches:
+  - name: "Admin access"
+    value: null
+    methods: "Post, Put, Delete"
+    denyRoles: "Writer, Reader"
+    allowRoles: "Admin"
+    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  - name: "Writer access"
+    value: null
+    methods: "Post, Put, Delete"
+    denyRoles: "Reader"
+    allowRoles: "Writer"
+    pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  - name: "Collaborator access"
+    value: null
+    methods: "Post, Delete"
+    denyRoles: "Collaborator"
+    allowRoles: "Reader, Writer"
+    pathPatterns: "/api/v1/projects/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
+  - name: "Reader access"
+    value: null
+    methods: "Get, Post, Put, Delete"
+    denyRoles: "Other"
+    allowRoles: "Reader, Writer"
+    pathPatterns: "/api/v1/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
 - type: "DDOS"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches:
   - name: "pageSize, page_size, maxResults, max_results"
     value: null
@@ -65,17 +117,18 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "sql_injection_timebound"
   assertions:
-  - "@ResponseTime < 7000"
+  - "@ResponseTime > 7000"
+  - "@ResponseTime < 10000"
   - "@StatusCode != 404"
   severity: null
   database:
     name: "MySQL"
     version: "5.7"
-  inactive: true
+  inactive: false
   matches: []
 - type: "log_Forging"
   assertions:
@@ -85,58 +138,15 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
-- type: "rbac"
-  assertions:
-  - "@StatusCode == 403"
-  severity: null
-  database: null
-  inactive: true
-  matches:
-  - name: "Admin access"
-    value: null
-    methods: "Post, Put, Delete"
-    denyRoles: "Writer, Reader"
-    allowRoles: null
-    pathPatterns: "/api/v1/orgs/**, /api/v1/accounts/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  - name: "Writer access"
-    value: null
-    methods: "Post, Put, Delete"
-    denyRoles: "Reader"
-    allowRoles: null
-    pathPatterns: "/api/v1/projects/**, /api/v1/regions/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  - name: "Collaborator access"
-    value: null
-    methods: "Post, Delete"
-    denyRoles: "Collaborator"
-    allowRoles: null
-    pathPatterns: "/api/v1/projects/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  - name: "Reader access"
-    value: null
-    methods: "Get, Post, Put, Delete"
-    denyRoles: "Other"
-    allowRoles: null
-    pathPatterns: "/api/v1/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
 - type: "invalid_datatype"
   assertions:
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "special_chars "
   assertions:
@@ -146,7 +156,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "null_value"
   assertions:
@@ -156,7 +166,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "empty_value"
   assertions:
@@ -166,7 +176,7 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "negative_number"
   assertions:
@@ -174,7 +184,7 @@ generators:
   - "@StatusCode != 404"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
 - type: "create"
   assertions:
@@ -184,5 +194,5 @@ generators:
   - "@StatusCode != 500"
   severity: null
   database: null
-  inactive: true
+  inactive: false
   matches: []
