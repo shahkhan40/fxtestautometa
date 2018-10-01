@@ -6,9 +6,9 @@ authors:
 - "FX Bot"
 type: "SUITE"
 init: []
-endpoint: "/api/v1/projects/{projectId}/files/{{@Random}}"
+endpoint: "/api/v1/projects/{{@Random}}/files/{{@Random}}"
 method: "GET"
-auth: "INVALID_AUTH"
+auth: "Invalid_Auth"
 headers:
 - "Accept: application/json"
 - "Content-Type: application/json"

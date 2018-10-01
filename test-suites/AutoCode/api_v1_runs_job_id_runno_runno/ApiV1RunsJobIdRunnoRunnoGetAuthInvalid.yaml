@@ -6,9 +6,9 @@ authors:
 - "FX Bot"
 type: "SUITE"
 init: []
-endpoint: "/api/v1/runs/job/{id}/runNo/{{@Random}}"
+endpoint: "/api/v1/runs/job/{{@Random}}/runNo/{{@Random}}"
 method: "GET"
-auth: "INVALID_AUTH"
+auth: "Invalid_Auth"
 headers:
 - "Accept: application/json"
 - "Content-Type: application/json"
@@ -16,7 +16,7 @@ testCases: []
 assertions:
 - "@StatusCode != 200"
 cleanup: []
-severity: "Critical"
+severity: "Major"
 category: "UnSecured"
 tags:
 - "V1"

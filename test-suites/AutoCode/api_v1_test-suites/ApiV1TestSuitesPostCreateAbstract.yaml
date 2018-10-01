@@ -19,7 +19,7 @@ testCases:
     \ : 'Bug',\n  'cleanup' : [ ],\n  'cleanupText' : null,\n  'createdBy' : null,\n\
     \  'createdDate' : null,\n  'description' : null,\n  'endpoint' : null,\n  'headers'\
     \ : [ ],\n  'headersText' : null,\n  'id' : null,\n  'inactive' : null,\n  'init'\
-    \ : [ ],\n  'initText' : null,\n  'method' : 'DELETE',\n  'modifiedBy' : null,\n\
+    \ : [ ],\n  'initText' : null,\n  'method' : 'PUT',\n  'modifiedBy' : null,\n\
     \  'modifiedDate' : null,\n  'name' : null,\n  'parent' : null,\n  'policies'\
     \ : {\n    'cleanupExec' : null,\n    'initExec' : null,\n    'logger' : null,\n\
     \    'repeat' : null,\n    'repeatDelay' : null,\n    'repeatModule' : null,\n\
@@ -30,9 +30,8 @@ testCases:
     \ : null,\n      'id' : null,\n      'inactive' : null,\n      'modifiedBy' :\
     \ null,\n      'modifiedDate' : null,\n      'name' : null,\n      'version' :\
     \ null\n    },\n    'version' : null\n  },\n  'props' : null,\n  'publishToMarketplace'\
-    \ : null,\n  'severity' : 'Critical',\n  'tags' : [ ],\n  'tagsText' : null,\n\
-    \  'testCases' : [ ],\n  'type' : 'AI_Skills',\n  'version' : null,\n  'yaml'\
-    \ : null\n}"
+    \ : null,\n  'severity' : 'Minor',\n  'tags' : [ ],\n  'tagsText' : null,\n  'testCases'\
+    \ : [ ],\n  'type' : 'Dataset',\n  'version' : null,\n  'yaml' : null\n}"
   inactive: false
 assertions:
 - "@StatusCode != 200"

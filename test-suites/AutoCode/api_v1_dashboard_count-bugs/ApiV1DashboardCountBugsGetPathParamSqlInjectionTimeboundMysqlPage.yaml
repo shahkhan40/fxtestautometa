@@ -17,7 +17,7 @@ assertions:
 - "@ResponseTime < 7000"
 - "@StatusCode != 404"
 cleanup: []
-severity: "Critical"
+severity: "Major"
 category: "SQL_Injection"
 tags:
 - "V1"

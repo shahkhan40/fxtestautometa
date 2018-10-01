@@ -8,7 +8,7 @@ type: "SUITE"
 init: []
 endpoint: "/api/v1/orgs/search"
 method: "GET"
-auth: "INVALID_AUTH"
+auth: "Invalid_Auth"
 headers:
 - "Accept: application/json"
 - "Content-Type: application/json"

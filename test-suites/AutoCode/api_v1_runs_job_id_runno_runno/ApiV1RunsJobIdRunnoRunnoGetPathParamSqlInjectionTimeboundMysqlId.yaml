@@ -15,11 +15,9 @@ headers:
 testCases: []
 assertions:
 - "@ResponseTime < 7000"
-- "@StatusCode != 401"
 - "@StatusCode != 404"
-- "@StatusCode != 500"
 cleanup: []
-severity: "Critical"
+severity: "Major"
 category: "SQL_Injection"
 tags:
 - "V1"
