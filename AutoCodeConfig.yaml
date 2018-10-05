@@ -16,7 +16,7 @@ generators:
   database: null
   inactive: false
   matches: []
-- type: "ddos"
+- type: "DDOS"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
@@ -45,9 +45,9 @@ generators:
   database: null
   inactive: false
   matches: []
-- type: "sql_injection"
+- type: "sql_injection_timebound"
   assertions:
-  - "@ResponseTime >= 5000"
+  - "@ResponseTime < 7000"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
@@ -122,10 +122,10 @@ generators:
   matches: []
 - type: "special_chars "
   assertions:
-  - "@StatusCode != 200"
-  - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
   severity: null
   database: null
   inactive: false
@@ -150,12 +150,29 @@ generators:
   database: null
   inactive: false
   matches: []
+- type: "negative_number"
+  assertions:
+  - "@StatusCode != 200"
+  - "@StatusCode != 401"
+  - "@StatusCode != 404"
+  - "@StatusCode != 500"
+  severity: null
+  database: null
+  inactive: false
+  matches: []
 - type: "create"
   assertions:
   - "@StatusCode != 200"
   - "@StatusCode != 401"
   - "@StatusCode != 404"
   - "@StatusCode != 500"
+  severity: null
+  database: null
+  inactive: false
+  matches: []
+- type: "no_params"
+  assertions:
+  - "@StatusCode == 200"
   severity: null
   database: null
   inactive: false
