@@ -1,6 +1,6 @@
 ---
 genPolicy: "Create"
-openAPISpec: "https://cloud.fxlabs.io/v2/api-docs"
+openAPISpec: "http://cloud.fxlabs.io/v2/api-docs"
 generators:
 - type: "no_params"
   assertions:
@@ -77,6 +77,15 @@ generators:
   database: null
   inactive: false
   matches:
+  - name: "Reader access"
+    value: null
+    methods: "Get, Post, Put, Delete"
+    denyRoles: "Other"
+    allowRoles: null
+    pathPatterns: "/api/v1/**"
+    resourceSamples: null
+    queryParams: null
+    bodyProperties: null
   - name: "Admin access"
     value: null
     methods: "Post, Put, Delete"
@@ -101,15 +110,6 @@ generators:
     denyRoles: "Collaborator"
     allowRoles: null
     pathPatterns: "/api/v1/projects/**"
-    resourceSamples: null
-    queryParams: null
-    bodyProperties: null
-  - name: "Reader access"
-    value: null
-    methods: "Get, Post, Put, Delete"
-    denyRoles: "Other"
-    allowRoles: null
-    pathPatterns: "/api/v1/**"
     resourceSamples: null
     queryParams: null
     bodyProperties: null
